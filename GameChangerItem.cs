@@ -10,7 +10,7 @@ namespace GameChanger {
 
 		////////////////
 
-		public override bool InstancePerEntity { get { return true; } }
+		public override bool InstancePerEntity => true;
 
 		
 		
@@ -53,10 +53,17 @@ namespace GameChanger {
 		////////////////
 
 		public override void Update( Item item, ref float gravity, ref float max_fall_speed ) {
-			if( !this.IsAltered ) {
-				this.IsAltered = true;
+			var mymod = GameChangerMod.Instance;
+			var myworld = mymod.GetModWorld<GameChangerWorld>();
 
-				//TODO
+			if( myworld.Logic.AreItemChangesEnabled(mymod) ) {
+				if( !this.IsAltered ) {
+					this.IsAltered = true;
+
+					if( myworld.Logic.DataAccess.GetItemChanges(item).Length > 0 ) {
+						myworld.Logic.ApplyItemChanges(item);
+					}
+				}
 			}
 		}
 	}

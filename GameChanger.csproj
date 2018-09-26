@@ -56,6 +56,7 @@
     <Compile Include="Data\ChangesAccess_Setters.cs" />
     <Compile Include="GameChangerMod.cs" />
     <Compile Include="GameChangerMod_Meta.cs" />
+    <Compile Include="Logic\WorldLogic_Change.cs" />
     <Compile Include="Logic\WorldLogic.cs" />
     <Compile Include="NetProtocol\ChangesProtocol.cs" />
     <Compile Include="NetProtocol\ModSettingsProtocol.cs" />
