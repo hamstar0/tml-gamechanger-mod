@@ -1,6 +1,7 @@
 author = hamstar
 version = 1.0.0
 displayName = Soul Bindings
+modReferences = HamstarHelpers@2.1.0
 buildIgnore = *.csproj, *.user, *.bat, obj\*, bin\*, .vs\*, .git\*
 includePDB = true
 languageVersion = 6

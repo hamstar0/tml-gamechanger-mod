@@ -4,9 +4,11 @@
 namespace GameChanger {
 	public static partial class GameChangerAPI {
 		internal static object Call( string call_type, params object[] args ) {
-			string ent_name, changes;
+			string ent_name, change;
+			string[] changes;
 			bool local_only;
 			
+
 			switch( call_type ) {
 			case "GetModSettings":
 				return GameChangerAPI.GetModSettings();
@@ -34,39 +36,50 @@ namespace GameChanger {
 				ent_name = args[0] as string;
 				if( ent_name == null ) { throw new Exception( "Invalid parameter ent_name for API call " + call_type ); }
 
-				changes = args[1] as string;
-				if( changes == null ) { throw new Exception( "Invalid parameter changes for API call " + call_type ); }
+				if( !( args[1] is bool ) ) { throw new Exception( "Invalid parameter local_only for API call " + call_type ); }
+				local_only = (bool)args[1];
 
-				if( !(args[2] is bool) ) { throw new Exception( "Invalid parameter local_only for API call " + call_type ); }
-				local_only = (bool)args[2];
+				change = args[2] as string;
+				if( change == null ) { throw new Exception( "Invalid parameter changes for API call " + call_type ); }
 
+				changes = new string[ args.Length - 2 ];
+				Array.Copy( args, 2, changes, 0, args.Length - 2 );
+				
 				GameChangerAPI.SetItemChange( ent_name, changes, local_only );
 				return null;
+
 			case "SetRecipeChange":
 				if( args.Length < 3 ) { throw new Exception( "Insufficient parameters for API call " + call_type ); }
 
 				ent_name = args[0] as string;
 				if( ent_name == null ) { throw new Exception( "Invalid parameter ent_name for API call " + call_type ); }
 
-				changes = args[1] as string;
-				if( changes == null ) { throw new Exception( "Invalid parameter changes for API call " + call_type ); }
+				if( !( args[1] is bool ) ) { throw new Exception( "Invalid parameter local_only for API call " + call_type ); }
+				local_only = (bool)args[1];
 
-				if( !( args[2] is bool ) ) { throw new Exception( "Invalid parameter local_only for API call " + call_type ); }
-				local_only = (bool)args[2];
+				change = args[2] as string;
+				if( change == null ) { throw new Exception( "Invalid parameter changes for API call " + call_type ); }
+
+				changes = new string[args.Length - 2];
+				Array.Copy( args, 2, changes, 0, args.Length - 2 );
 
 				GameChangerAPI.SetRecipeChange( ent_name, changes, local_only );
 				return null;
+
 			case "SetNpcChange":
 				if( args.Length < 3 ) { throw new Exception( "Insufficient parameters for API call " + call_type ); }
 
 				ent_name = args[0] as string;
 				if( ent_name == null ) { throw new Exception( "Invalid parameter ent_name for API call " + call_type ); }
 
-				changes = args[1] as string;
-				if( changes == null ) { throw new Exception( "Invalid parameter changes for API call " + call_type ); }
+				if( !( args[1] is bool ) ) { throw new Exception( "Invalid parameter local_only for API call " + call_type ); }
+				local_only = (bool)args[1];
 
-				if( !( args[2] is bool ) ) { throw new Exception( "Invalid parameter local_only for API call " + call_type ); }
-				local_only = (bool)args[2];
+				change = args[2] as string;
+				if( change == null ) { throw new Exception( "Invalid parameter changes for API call " + call_type ); }
+
+				changes = new string[args.Length - 2];
+				Array.Copy( args, 2, changes, 0, args.Length - 2 );
 
 				GameChangerAPI.SetNpcChange( ent_name, changes, local_only );
 				return null;
