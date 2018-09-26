@@ -54,9 +54,9 @@ namespace GameChanger.Logic {
 				if( !myworld.Logic.DataAccess.IsActive() ) {
 					string msg;
 					if( Main.netMode == 0 ) {
-						msg = "Enter the /gcon command to active Game Changer changes for this world. Enter /help for a list of other commands.";
+						msg = "Enter the /gc-on command to active Game Changer changes for this world. Enter /help for a list of other commands.";
 					} else {
-						msg = "Enter gcon in the server's command console to activate Game Changer changes restrictions for this world. Enter help for a list of other commands.";
+						msg = "Enter gc-on in the server's command console to activate Game Changer changes restrictions for this world. Enter help for a list of other commands.";
 					}
 
 					InboxMessages.SetMessage( "GameChangerInit", msg, false );

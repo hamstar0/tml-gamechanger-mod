@@ -20,17 +20,17 @@ namespace GameChanger {
 			myworld.Logic.PostChangesLoad( mymod );
 
 			this.FinishModSettingsSync();
-			this.FinishFiltersSync();
+			this.FinishChangesSync();
 		}
 
 		internal void OnConnectClient() {
 			PacketProtocol.QuickRequestToServer<ModSettingsProtocol>();
-			PacketProtocol.QuickRequestToServer<FiltersProtocol>();
+			PacketProtocol.QuickRequestToServer<ChangesProtocol>();
 		}
 
 		internal void OnEnterWorldForServer() {
 			this.IsModSettingsSynced = true;
-			this.IsFiltersSynced = true;
+			this.IsChangesSynced = true;
 		}
 
 
@@ -40,14 +40,14 @@ namespace GameChanger {
 			this.IsModSettingsSynced = true;
 		}
 
-		internal void FinishFiltersSync() {
-			this.IsFiltersSynced = true;
+		internal void FinishChangesSync() {
+			this.IsChangesSynced = true;
 		}
 
 		////////////////
 
 		public bool IsSynced() {
-			return this.IsModSettingsSynced && this.IsFiltersSynced;
+			return this.IsModSettingsSynced && this.IsChangesSynced;
 		}
 	}
 }

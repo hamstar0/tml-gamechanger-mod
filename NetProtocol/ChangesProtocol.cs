@@ -56,7 +56,7 @@ namespace GameChanger.NetProtocol {
 
 			myworld.Logic.PostChangesLoad( mymod );
 
-			myplayer.FinishFiltersSync();
+			myplayer.FinishChangesSync();
 		}
 	}
 }

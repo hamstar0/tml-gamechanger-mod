@@ -6,7 +6,8 @@ using Terraria.ModLoader;
 namespace GameChanger {
 	partial class GameChangerPlayer : ModPlayer {
 		private bool IsModSettingsSynced = false;
-		private bool IsFiltersSynced = false;
+		private bool IsChangesSynced = false;
+
 
 
 		////////////////
@@ -17,7 +18,6 @@ namespace GameChanger {
 
 		public override void clientClone( ModPlayer client_clone ) {
 			var clone = (GameChangerPlayer)client_clone;
-			//clone.HasEnteredWorld = this.HasEnteredWorld;
 		}
 
 
