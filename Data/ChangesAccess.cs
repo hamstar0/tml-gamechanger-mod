@@ -49,7 +49,7 @@ namespace GameChanger.Data {
 
 		////////////////
 
-		public void OutputFilters() {
+		public void OutputChanges() {
 			Main.NewText( "Is changed: " + this.Data.IsActive );
 			Main.NewText( "Items: " + this.Data.ItemChanges.Count );
 			Main.NewText( "Recipes: " + this.Data.RecipeChanges.Count );

@@ -6,9 +6,9 @@ namespace GameChanger.Data {
 	class GameChangerChangesData : ConfigurationDataBase {
 		public bool IsActive = false;
 
-		public IDictionary<string, string> ItemChanges = new Dictionary<string, string> { };
-		public IDictionary<string, string> RecipeChanges = new Dictionary<string, string> { };
-		public IDictionary<string, string> NpcChanges = new Dictionary<string, string> { };
+		public IDictionary<string, string[]> ItemChanges = new Dictionary<string, string[]> { };
+		public IDictionary<string, string[]> RecipeChanges = new Dictionary<string, string[]> { };
+		public IDictionary<string, string[]> NpcChanges = new Dictionary<string, string[]> { };
 
 
 

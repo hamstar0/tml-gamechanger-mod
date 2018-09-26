@@ -1,14 +1,14 @@
 ﻿namespace GameChanger.Data {
 	partial class GameChangerChangesAccess {
-		public void SetItemChange( string item_name, string changes ) {
+		public void SetItemChange( string item_name, string[] changes ) {
 			this.Data.ItemChanges[item_name] = changes;
 		}
 
-		public void SetRecipeChange( string item_name, string changes ) {
+		public void SetRecipeChange( string item_name, string[] changes ) {
 			this.Data.RecipeChanges[item_name] = changes;
 		}
 
-		public void SetNpcChange( string npc_name, string changes ) {
+		public void SetNpcChange( string npc_name, string[] changes ) {
 			this.Data.NpcChanges[npc_name] = changes;
 		}
 

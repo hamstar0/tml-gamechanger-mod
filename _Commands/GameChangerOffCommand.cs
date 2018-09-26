@@ -4,10 +4,10 @@ using Terraria.ModLoader;
 
 
 namespace GameChanger.Commands {
-	class DefaultFiltersResetCommand : ModCommand {
+	class GameChangerOffCommand : ModCommand {
 		public override string Command {
 			get {
-				return "nih-defaults-reset";
+				return "gc-off";
 			}
 		}
 		public override CommandType Type {
@@ -26,7 +26,7 @@ namespace GameChanger.Commands {
 		}
 		public override string Description {
 			get {
-				return "Sets default config's white and blacklists to override the current world's.";
+				return "Deactivates Game Changer mod for the current world.";
 			}
 		}
 
@@ -34,9 +34,14 @@ namespace GameChanger.Commands {
 		////////////////
 
 		public override void Action( CommandCaller caller, string input, string[] args ) {
-			GameChangerAPI.ResetChangesFromDefaults();
+			var myworld = this.mod.GetModWorld<GameChangerWorld>();
 
-			caller.Reply( "Current world's filters reset to defaults.", Color.YellowGreen );
+			if( GameChangerAPI.RevertCurrentWorld() ) {
+				caller.Reply( "Game Changer removed from current world.", Color.LimeGreen );
+			} else {
+				caller.Reply( "Game Changer already removed from current world.", Color.Yellow );
+				return;
+			}
 		}
 	}
 }

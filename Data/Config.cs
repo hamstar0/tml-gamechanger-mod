@@ -15,9 +15,9 @@ namespace GameChanger.Data {
 
 		public bool DebugModeInfo = false;
 
-		public IDictionary<string, string> DefaultItemChanges = new Dictionary<string, string> { };
-		public IDictionary<string, string> DefaultRecipeChanges = new Dictionary<string, string> { };
-		public IDictionary<string, string> DefaultNpcChanges = new Dictionary<string, string> { };
+		public IDictionary<string, string[]> DefaultItemChanges = new Dictionary<string, string[]> { };
+		public IDictionary<string, string[]> DefaultNpcChanges = new Dictionary<string, string[]> { };
+		public IDictionary<string, string[]> DefaultRecipeChanges = new Dictionary<string, string[]> { };
 
 		public bool EnableItemChanges = false;
 		public bool EnableRecipeChanges = false;
@@ -32,9 +32,9 @@ namespace GameChanger.Data {
 			this.DefaultRecipeChanges.Clear();
 			this.DefaultNpcChanges.Clear();
 
-			this.DefaultItemChanges["Any Equipment"] = "+damage=1";
-			this.DefaultRecipeChanges["Any Equipment"] = "+Dirt Block";
-			this.DefaultNpcChanges["Any Hostile NPC"] = "-lifeMax=1";
+			this.DefaultItemChanges["Any Equipment"] = new string[] { "+damage=1" };
+			this.DefaultRecipeChanges["Any Equipment"] = new string[] { "+Dirt Block" };
+			this.DefaultNpcChanges["Any Hostile NPC"] = new string[] { "-lifeMax=1" };
 		}
 
 

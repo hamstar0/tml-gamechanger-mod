@@ -4,10 +4,10 @@ using Terraria.ModLoader;
 
 
 namespace GameChanger.Commands {
-	class NihilismOffCommand : ModCommand {
+	class DefaultChangesSetCommand : ModCommand {
 		public override string Command {
 			get {
-				return "nih-off";
+				return "nih-defaults-set";
 			}
 		}
 		public override CommandType Type {
@@ -26,7 +26,7 @@ namespace GameChanger.Commands {
 		}
 		public override string Description {
 			get {
-				return "Deactivates Nihilism mod for the current world.";
+				return "Set current white and blacklists as the initial defaults for every world.";
 			}
 		}
 
@@ -34,14 +34,9 @@ namespace GameChanger.Commands {
 		////////////////
 
 		public override void Action( CommandCaller caller, string input, string[] args ) {
-			var myworld = this.mod.GetModWorld<NihilismWorld>();
+			GameChangerAPI.SetCurrentChangesAsDefaults();
 
-			if( GameChangerAPI.RevertCurrentWorld() ) {
-				caller.Reply( "Current world is no longer nihilated.", Color.YellowGreen );
-			} else {
-				caller.Reply( "Current world is already unnihilated.", Color.Yellow );
-				return;
-			}
+			caller.Reply( "Current world's filters as the new defaults.", Color.YellowGreen );
 		}
 	}
 }

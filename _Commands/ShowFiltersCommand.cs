@@ -4,10 +4,10 @@ using Terraria.ModLoader;
 
 
 namespace GameChanger.Commands {
-	class ShowFiltersCommand : ModCommand {
+	class ShowChangesCommand : ModCommand {
 		public override string Command {
 			get {
-				return "nih-show-filters";
+				return "gc-show-filters";
 			}
 		}
 		public override CommandType Type {
@@ -26,7 +26,7 @@ namespace GameChanger.Commands {
 		}
 		public override string Description {
 			get {
-				return "Displays each filter currently active or the world.";
+				return "Displays each change currently active for the world.";
 			}
 		}
 
@@ -34,8 +34,8 @@ namespace GameChanger.Commands {
 		////////////////
 
 		public override void Action( CommandCaller caller, string input, string[] args ) {
-			var myworld = this.mod.GetModWorld<NihilismWorld>();
-			myworld.Logic.DataAccess.OutputFilters();
+			var myworld = this.mod.GetModWorld<GameChangerWorld>();
+			myworld.Logic.DataAccess.OutputChanges();
 		}
 	}
 }
