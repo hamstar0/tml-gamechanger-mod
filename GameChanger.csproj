@@ -38,9 +38,10 @@
     <Compile Include="API_Call.cs" />
     <Compile Include="API_Clear.cs" />
     <Compile Include="API_Set.cs" />
-    <Compile Include="GameChangerItem.cs" />
-    <Compile Include="GameChangerPlayer.cs" />
-    <Compile Include="GameChangerPlayer_Load.cs" />
+    <Compile Include="MyNPC.cs" />
+    <Compile Include="MyItem.cs" />
+    <Compile Include="MyPlayer.cs" />
+    <Compile Include="MyPlayer_Load.cs" />
     <Compile Include="Commands\DefaultChangesResetCommand.cs" />
     <Compile Include="Commands\DefaultChangesSetCommand.cs" />
     <Compile Include="Commands\ItemChangeSetCommand.cs" />
@@ -54,15 +55,15 @@
     <Compile Include="Data\ChangesAccess.cs" />
     <Compile Include="Data\ChangesAccess_Getters.cs" />
     <Compile Include="Data\ChangesAccess_Setters.cs" />
-    <Compile Include="GameChangerMod.cs" />
-    <Compile Include="GameChangerMod_Meta.cs" />
+    <Compile Include="MyMod.cs" />
+    <Compile Include="MyMod_Meta.cs" />
     <Compile Include="Logic\ChangeLogic_Changer.cs" />
     <Compile Include="Logic\ChangeLogic.cs" />
     <Compile Include="Logic\WorldLogic_Change.cs" />
     <Compile Include="Logic\WorldLogic.cs" />
     <Compile Include="NetProtocol\ChangesProtocol.cs" />
     <Compile Include="NetProtocol\ModSettingsProtocol.cs" />
-    <Compile Include="GameChangerWorld.cs" />
+    <Compile Include="MyWorld.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HamstarHelpers">

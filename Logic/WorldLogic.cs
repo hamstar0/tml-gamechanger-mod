@@ -96,7 +96,7 @@ namespace GameChanger.Logic {
 			return this.DataAccess.IsActive() && mymod.Config.EnableRecipeChanges;
 		}
 
-		public bool AreNpcsChangesEnabled( GameChangerMod mymod ) {
+		public bool AreNpcChangesEnabled( GameChangerMod mymod ) {
 			return this.DataAccess.IsActive() && mymod.Config.EnableNpcChanges;
 		}
 	}
