@@ -1,4 +1,5 @@
 ﻿using HamstarHelpers.Helpers.DebugHelpers;
+using HamstarHelpers.Helpers.ItemHelpers;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -26,12 +27,36 @@ namespace GameChanger.Logic {
 
 		public void ApplyRecipeChanges( Item item ) {
 			ISet<string> changes = this.DataAccess.GetRecipeChanges( item );
-			bool replaces = changes.All( s => s[0] == '+' || s[0] == '-' || s[0] == '*' || s[0] == '/' );
+			IList<Recipe> recipes = ChangeLogic.GetRecipesOfItem( item.type );
+			
+			foreach( string change in changes ) {
+				if( change[0] != '+' || change[0] != '-' ) {
+					LogHelpers.Log( "GameChanger.WorldLogic.ApplyRecipeChanges - Invalid recipe ("+item.Name+") ingredient change item " + change );
+					continue;
+				}
 
-			if( replaces ) {
-				foreach( string change in changes ) {
-					string real_change = change.Substring( 1 );
+				string ingredient_item_name = change.Substring( 1 );
+				if( !ItemIdentityHelpers.NamesToIds.ContainsKey(ingredient_item_name) ) {
+					//LogHelpers.Log( "GameChanger.WorldLogic.ApplyRecipeChanges - Invalid recipe ("+item.Name+") ingredient item "+ingredient_item_name );
+					continue;
+				}
 
+				int ingredient_item_type = ItemIdentityHelpers.NamesToIds[ ingredient_item_name ];
+				Item ingredient_item = new Item();
+				ingredient_item.SetDefaults( ingredient_item_type, true );
+
+				IList<Item> ingredients;
+
+				foreach( Recipe recipe in recipes ) {
+					ingredients = recipe.requiredItem.ToList();
+
+					if( change[0] == '+' ) {
+						ingredients.Add( ingredient_item );
+					} else {
+						ingredients = ingredients.Where( i => i.type != ingredient_item_type ).ToList();
+					}
+
+					recipe.requiredItem = ingredients.ToArray();
 				}
 			}
 		}

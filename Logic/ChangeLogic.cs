@@ -1,9 +1,27 @@
 ﻿using HamstarHelpers.Helpers.DebugHelpers;
 using System;
-
+using System.Collections.Generic;
+using Terraria;
 
 namespace GameChanger.Logic {
 	partial class ChangeLogic {
+		// TODO: Transfer to Mod Helpers
+		public static IList<Recipe> GetRecipesOfItem( int item_type ) {
+			IList<Recipe> recipes = new List<Recipe>();
+
+			for( int i = 0; i < Main.recipe.Length; i++ ) {
+				Recipe recipe = Main.recipe[i];
+				int recipe_item_type = recipe.createItem.type;
+
+				if( item_type != recipe_item_type ) {
+					recipes.Add( recipe );
+				}
+			}
+
+			return recipes;
+		}
+
+
 		// TODO: Transfer to Mod Helpers
 		public static object ParseAsObject( Type parse_type, string raw_value, out bool success ) {
 			success = true;
