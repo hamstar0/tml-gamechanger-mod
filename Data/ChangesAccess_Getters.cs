@@ -8,7 +8,7 @@ using Terraria;
 
 namespace GameChanger.Data {
 	partial class GameChangerChangesAccess {
-		internal ISet<string> GetItemChanges( Item item ) {
+		public ISet<string> GetItemChanges( Item item ) {
 			string name = ItemIdentityHelpers.GetQualifiedName( item );
 			ISet<string> changes = new HashSet<string>();
 
@@ -29,7 +29,7 @@ namespace GameChanger.Data {
 			return changes;
 		}
 
-		private ISet<string> GetRecipeChanges( Item item ) {
+		public ISet<string> GetRecipeChanges( Item item ) {
 			string name = ItemIdentityHelpers.GetQualifiedName( item );
 			ISet<string> changes = new HashSet<string>();
 
@@ -50,7 +50,7 @@ namespace GameChanger.Data {
 			return changes;
 		}
 
-		private ISet<string> IsNpcBlacklisted( NPC npc ) {
+		public ISet<string> GetNpcChanges( NPC npc ) {
 			string name = NPCIdentityHelpers.GetQualifiedName( npc );
 			ISet<string> changes = new HashSet<string>();
 
