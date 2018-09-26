@@ -1,0 +1,3 @@
+Allows reconfiguring item and NPC stats and attributes. Changes may be made globally or on a per-world basis.
+
+Mod.Call() API available.
