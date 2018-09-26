@@ -1,6 +1,7 @@
 ﻿using HamstarHelpers.Helpers.NPCHelpers;
 using Microsoft.Xna.Framework;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -50,7 +51,8 @@ namespace GameChanger.Commands {
 
 			int ent_id = Int32.Parse( args[0] );
 			string ent_name = NPCIdentityHelpers.GetQualifiedName( ent_id );
-			string changes = args[1];
+
+			string[] changes = args.Skip( 1 ).ToArray();
 
 			myworld.Logic.DataAccess.SetNpcChange( ent_name, changes );
 			myworld.Logic.SyncDataChanges();

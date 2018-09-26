@@ -7,7 +7,7 @@ namespace GameChanger.Commands {
 	class DefaultChangesResetCommand : ModCommand {
 		public override string Command {
 			get {
-				return "nih-defaults-reset";
+				return "gc-defaults-reset";
 			}
 		}
 		public override CommandType Type {
@@ -26,7 +26,7 @@ namespace GameChanger.Commands {
 		}
 		public override string Description {
 			get {
-				return "Sets default config's white and blacklists to override the current world's.";
+				return "Sets default config's changes to override the current world's.";
 			}
 		}
 
@@ -36,7 +36,7 @@ namespace GameChanger.Commands {
 		public override void Action( CommandCaller caller, string input, string[] args ) {
 			GameChangerAPI.ResetChangesFromDefaults();
 
-			caller.Reply( "Current world's filters reset to defaults.", Color.YellowGreen );
+			caller.Reply( "Current world's changes reset to defaults.", Color.YellowGreen );
 		}
 	}
 }

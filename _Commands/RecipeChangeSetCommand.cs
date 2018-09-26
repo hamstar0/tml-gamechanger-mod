@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 
@@ -52,10 +51,10 @@ namespace GameChanger.Commands {
 			var myworld = mymod.GetModWorld<GameChangerWorld>();
 
 			int base_item_id = Int32.Parse( args[0] );
-			IEnumerable<int> ingredient_item_ids = args[1].Split( ' ' ).Select( s => Int32.Parse(s) );
+			IEnumerable<int> ingredient_item_ids = args[1].Split(' ').Select( s => Int32.Parse(s) );
 
 			string base_item_name = ItemIdentityHelpers.GetQualifiedName( base_item_id );
-			string[] ingredients = ingredient_item_ids.Select( idx=>ItemIdentityHelpers.GetQualifiedName(idx) ).ToArray();
+			string[] ingredients = ingredient_item_ids.Select( idx => ItemIdentityHelpers.GetQualifiedName(idx) ).ToArray();
 
 			myworld.Logic.DataAccess.SetRecipeChange( base_item_name, ingredients );
 			myworld.Logic.SyncDataChanges();
